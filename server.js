@@ -5,11 +5,11 @@ const path = require('path')
 const app = express()
  
 //here we are configuring dist to serve app files
-app.use('/', serveStatic(path.join(__dirname, '/src')))
+app.use('/', serveStatic(path.join(__dirname, '/src/main.js')))
  
 // this * route is to serve project on different page routes except root `/`
 app.get(/.*/, function (req, res) {
-    res.sendFile(path.join(__dirname, '/src/App.vue'))
+    res.sendFile(path.join(__dirname, '/src/main.js'))
 })
  
 const port = process.env.PORT || 8080
