@@ -1,9 +1,8 @@
-const express = require('express')
-const serveStatic = require('serve-static')
-const path = require('path')
 
- 
-const app = express()
+const serveStatic = require('serve-static')
+var express = require('express'),
+    cors = require('cors'),
+    app = express();
 var corsOptions = {
     origin: '*'
 };
