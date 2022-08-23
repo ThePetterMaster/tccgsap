@@ -3,7 +3,6 @@ const serveStatic = require('serve-static')
 const path = require('path')
 
 const cors = require('cors')
-const serveStatic = require('serveStatic')
 const app = express()
 
 var corsOptions = {
