@@ -13,6 +13,7 @@
     </div>
     <div class="imagemContainer">
       <img src="./sort.png" alt="Selection Sort" width="500" height="500" />
+      <div id="bordacodigo"></div>
     </div>
     
   </div>
@@ -71,6 +72,7 @@ export default {
 
     gsap.set("#i",{scale: 0})
     gsap.set("#j",{scale: 0})  
+    gsap.set("#bordacodigo",{scale: 0})  
  
 
 
@@ -172,6 +174,8 @@ export default {
   methods: {
 
     selectionSort() { 
+      tl.set("#bordacodigo",{scale: 1})
+      tl.to( "#bordacodigo", { y:-27*8.5  });
       
 
 
@@ -196,6 +200,7 @@ export default {
       var j=i+1  
       for( i = 0; i < n; i++) {  
         tl.set("#i",{scale: 1})
+        tl.to( "#bordacodigo", { y:-27*7.5  });
     
    
         // tl.to(`#borda`, { 
@@ -212,18 +217,30 @@ export default {
        tl.set("#i",{scale: 1})
        tl.fromTo( "#i",{ x:( -0.5*(this.elementos.length-1)*document.querySelector(".box").offsetWidth+document.querySelector(".box").offsetWidth*(i-1)) }, { x:( -0.5*(this.elementos.length-1)*document.querySelector(".box").offsetWidth+document.querySelector(".box").offsetWidth*(i))  });
         var min = i;
+        tl.to( "#bordacodigo", { y:-27*6.5  });
+        
           for( j = i+1; j < n; j++){
+            tl.to( "#bordacodigo", { y:-27*5.5  });
 
             // console.log(j)
               if(this.elementos[j] < this.elementos[min]) {
+                tl.to( "#bordacodigo", { y:-27*4.5  });
                   min=j;
+                  tl.to( "#bordacodigo", { y:-27*3.5  });
 
               }
+              tl.to( "#bordacodigo", { y:-27*2.5  });
             tl.set("#j",{scale: 1})  
             // tl.fromTo( "#j",{ x:( -(largura/(this.elementos.length*2)+largura/(this.elementos.length))+(largura*j-1)/(this.elementos.length)),duration: 1,ease: "sine.out", }, {x: ( -(largura/(this.elementos.length*2)+largura/(this.elementos.length))+(largura*j)/(this.elementos.length)),duration: 1,ease: "sine.out", });
                tl.fromTo( "#j",{ x:( -0.5*(this.elementos.length-1)*document.querySelector(".box").offsetWidth+document.querySelector(".box").offsetWidth*(j-1)) }, { x:( -0.5*(this.elementos.length-1)*document.querySelector(".box").offsetWidth+document.querySelector(".box").offsetWidth*(j))  });
           }
+          tl.to( "#bordacodigo", { y:-27*1.5  });
           if (min != i) {
+            tl.to( "#bordacodigo", { y:-27*0.5  });
+
+            tl.to( "#bordacodigo", { y:27*0.5  });
+            tl.to( "#bordacodigo", { y:27*1.5  });
+            tl.to( "#bordacodigo", { y:27*2.5  });
             
                   // console.log(this.elementos[i])
                   // console.log(this.elementos[min])
@@ -231,13 +248,13 @@ export default {
 
               tl.to(`#box${this.oredenados.indexOf(this.elementos[i])}`, { 
                 duration: 0.3,
-                backgroundColor: 'green',
+                backgroundColor: 'orange',
                 yoyo: true,
                 repeat: 2,
               });
               tl.to(`#box${this.oredenados.indexOf(this.elementos[min])}`, { 
                 duration: 0.3,
-                backgroundColor: 'green',
+                backgroundColor: 'orange',
                 yoyo: true,
                 repeat: 2,
               },"<");
@@ -302,18 +319,52 @@ export default {
               y: 0,
 
             },"<");
+            if((this.oredenados.indexOf(this.elementos[min])-i)==0){
+              tl.to(`#box${this.oredenados.indexOf(this.elementos[min])}`, { 
+                duration: 0.3,
+                backgroundColor: 'green',
+                yoyo: true,
+                repeat: 2,
+              });
+            }else{
+              tl.to(`#box${this.oredenados.indexOf(this.elementos[min])}`, { 
+                duration: 0.3,
+                backgroundColor: 'red',
+              });
+            }
+            if((min-this.oredenados.indexOf(this.elementos[i]))==0){
+              tl.to(`#box${this.oredenados.indexOf(this.elementos[i])}`, { 
+                duration: 0.3,
+                backgroundColor: 'green',
+                yoyo: true,
+                repeat: 2,
+              });
+            }else{
+              tl.to(`#box${this.oredenados.indexOf(this.elementos[i])}`, { 
+                duration: 0.3,
+                backgroundColor: 'red',
+
+              });
+            }
+  
 
               let tmp = this.elementos[i];
+         
               this.elementos[i]=this.elementos[min];
+      
               this.elementos[min]=tmp;
-  
+          
    
           }
+          tl.to( "#bordacodigo", { y:27*3.5  });
       }
+      tl.to( "#bordacodigo", { y:27*4.5  });
         // console.log(this.elementos)
         tl.set("#i",{scale: 0})
         tl.set("#j",{scale: 0})
+        tl.set("#bordacodigo",{scale: 0})
     }
+
   }
   
 }
@@ -421,6 +472,16 @@ window.addEventListener('resize', function() {
   border-width: 4px;
   height: 100px;
   width: 100px;
+  opacity:0.5;
+}
+
+#bordacodigo{
+  height: 27px;
+  width: 500px;
+  position:absolute;
+  background-color: white;
+  border-style: solid;
+  border-width: 4px;
   opacity:0.5;
 }
 
