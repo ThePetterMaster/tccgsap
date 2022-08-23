@@ -4,8 +4,10 @@ const path = require('path')
 
  
 const app = express()
-cors = require('cors'),
-app.use(cors());
+var corsOptions = {
+    origin: '*'
+};
+app.use(cors(corsOptions));
 //here we are configuring dist to serve app files
 app.use('/', serveStatic(path.join(__dirname, '/dist')))
  
