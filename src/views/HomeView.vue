@@ -63,16 +63,17 @@ export default {
     return {
       larguraDaTela: window.innerWidth,
   
-      elementos:[9,3,7,4,5],
-      oredenados:[3,4,5,7,9],
+      elementos:[4,3,2,1],
+      oredenados:[1,2,3,4],
       
     };
   },
   mounted() {
 
+
+    gsap.set("#bordacodigo",{scale: 0}) 
     gsap.set("#i",{scale: 0})
-    gsap.set("#j",{scale: 0})  
-    gsap.set("#bordacodigo",{scale: 0})  
+    gsap.set("#j",{scale: 0})   
  
 
 
@@ -176,6 +177,7 @@ export default {
     selectionSort() { 
       tl.set("#bordacodigo",{scale: 1})
       tl.to( "#bordacodigo", { y:-27*8.5  });
+      
       
 
 
