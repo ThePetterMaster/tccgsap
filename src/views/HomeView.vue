@@ -63,7 +63,7 @@ export default {
     return {
       larguraDaTela: window.innerWidth,
   
-      elementos:[4,3,2,1],
+      elementos:[3,4,1,2],
       oredenados:[1,2,3,4],
       
     };
